@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(void) {
+int main(void) {  
+
 
   FILE *arquivo;
   arquivo = fopen("registro.txt", "a");
 
-  if (arquivo == NULL) {
-    printf("Erro ao abrir o arquivo.");
-    return 1;
-  }
+  // if (arquivo == NULL) {
+  //   printf("Erro ao abrir o arquivo.");
+  //   return 1;
+  // }
 
   // PUTC
   //  char ch;
 
-  // printf("Digite os caracteres. Pressione Enter para   encerrar.\n");
+  // printf("Digite os caracteres. Pressione Enter para encerrar.\n");
   // while (ch != '\n') {
   //   ch = getchar();
   //   putc(ch, arquivo);
@@ -60,3 +61,64 @@ int main(void) {
   // printf("Nome: %s\n", nome);
   // printf("Idade: %d\n", idade);
   // printf("Sexo: %c", sexo);
+
+ // FGETS
+  // char linha[30];
+  // while (fgets(linha, 30, arquivo) != NULL) {
+  //   printf("%s", linha);
+  // }
+
+  // FEOF
+
+  // char linha[50];
+
+  // while(!feof(arquivo)){
+  //   fgets(linha, 50, arquivo);
+  //   printf("%s", linha);
+  // }
+
+  // STRTOK
+
+  // int contador = 0;
+  // char frase[50];
+  // char pesquisa[10] = "professor";
+
+  // while (fgets(frase, sizeof(frase), arquivo) != NULL) {
+  //   char *token = strtok(frase, " \t\n"); // Dividir a linha em palavras
+  //   while (token != NULL) {
+  //     if (strcmp(token, pesquisa) == 0) {
+  //       contador++;
+  //     }
+  //     token = strtok(NULL, " \t\n");
+  //   }
+  // }
+  // printf("Ocorrências: %d", contador);
+
+  // fclose(arquivo);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+}
