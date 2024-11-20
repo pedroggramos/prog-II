@@ -184,74 +184,157 @@
 
 // 5
 
-struct contaBancaria{
-    int numConta;
-    char nomeTitular[50];
-    float saldo;
+// struct contaBancaria{
+//     int numConta;
+//     char nomeTitular[50];
+//     float saldo;
+// };
+
+// void depositar(struct contaBancaria* conta, float valor){
+
+//     if(valor > 0){
+//         conta->saldo += valor;
+//         printf("Depósito de %.2f", valor);
+//     }
+//     else{
+//         printf("Valor Inválido");
+//     }
+
+// }
+
+// void sacar(struct contaBancaria* conta, float valor){
+//     if(valor > 0 && valor <= conta->saldo){
+//         conta->saldo -= valor;
+//          printf("Saque de R$ %.2f realizado com sucesso!\n", valor);
+//     }
+//     else if (valor > conta->saldo) { 
+//         printf("Saldo insuficiente para o saque de R$ %.2f.\n", valor); 
+//     }
+//     else {  
+//         printf("Valor de saque inválido.\n");
+//     }
+// }
+
+// void imprimir(struct contaBancaria conta) {
+//     printf("Número da conta: %d\n", conta.numConta);
+//     printf("Titular: %s\n", conta.nomeTitular);
+//     printf("Saldo atual: R$ %.2f\n", conta.saldo);
+// }
+
+// int main() {
+//     struct contaBancaria conta1;
+
+//     printf("Digite o número da conta: ");
+//     scanf("%d", &conta1.numConta);
+
+//     printf("Digite o nome do titular da conta: ");
+//     getchar(); 
+//     fgets(conta1.nomeTitular, sizeof(conta1.nomeTitular), stdin);
+//     conta1.nomeTitular[strcspn(conta1.nomeTitular, "\n")] = '\0';  
+//     conta1.saldo = 0.00; 
+
+//     printf("\nConta criada com sucesso!\n");
+//     imprimir(conta1);
+
+
+//     float deposito;
+//     printf("\nDigite o valor para depósito: R$ ");
+//     scanf("%f", &deposito);
+//     depositar(&conta1, deposito);
+//     imprimir(conta1);
+
+
+//     float saque;
+//     printf("\nDigite o valor para saque: R$ ");
+//     scanf("%f", &saque);
+//     sacar(&conta1, saque);
+//     imprimir(conta1);
+
+//     return 0;
+// }
+
+// 6
+
+// struct Carro{
+//     char marca[30];
+//     char modelo[30];
+//     int anoFabri;
+// };
+
+// int main(){
+
+//     struct Carro carros[3];
+
+//     for(int i = 0; i < 3;i++){
+//         printf("Digite a marca do carro %d: ", i + 1);
+//         fgets(carros[i].marca, sizeof(carros[i].marca), stdin);
+//         carros[i].marca[strcspn(carros[i].marca, "\n")] = '\0';
+//         printf("Digite o modelo do carro %d: ", i + 1);
+ 
+//         fgets(carros[i].modelo, sizeof(carros[i].modelo), stdin);
+//         carros[i].modelo[strcspn(carros[i].modelo, "\n")] = '\0';
+
+//         printf("Digite o ano de fabricação do carro %d: ", i + 1);
+//         scanf("%d", &carros[i].anoFabri);
+//         getchar();
+        
+//     }
+
+//      for (int i = 0; i < 3; i++) {
+//         printf("Carro %d:\n", i + 1);
+//         printf("Marca: %s\n", carros[i].marca);
+//         printf("Modelo: %s\n", carros[i].modelo);
+//         printf("Ano: %d\n\n", carros[i].anoFabri);
+//     }
+
+//     return 0;
+
+// }
+
+// 7
+
+struct Funcionario{
+    char nome[50];
+    float salario;
 };
 
-void depositar(struct contaBancaria* conta, float valor){
+int main(){
 
-    if(valor > 0){
-        conta->saldo += valor;
-        printf("Depósito de %.2f", valor);
+
+    int n;
+    float somaSalarios = 0;
+
+    printf("Digite o número de funcionários: ");
+    scanf("%d", &n);
+
+
+    struct Funcionario* func;
+
+    func = (struct Funcionario*) malloc(n * sizeof(struct Funcionario));
+     if (func == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return 1;
     }
-    else{
-        printf("Valor Inválido");
+
+     for (int i = 0; i < n; i++) {
+        printf("Digite o nome do funcionário %d: ", i + 1);
+        getchar(); 
+        fgets(func[i].nome, sizeof(func[i].nome), stdin);
+        func[i].nome[strcspn(func[i].nome, "\n")] = '\0'; // Remove o '\n' do final
+
+        printf("Digite o salário do funcionário %d: ", i + 1);
+        scanf("%f", &func[i].salario);
+
+
+        somaSalarios += func[i].salario;
     }
 
-}
+    float salarioMedio = somaSalarios / n;
+    printf("O salário médio dos funcionários é: %.2f\n", salarioMedio);
 
-void sacar(struct contaBancaria* conta, float valor){
-    if(valor > 0 && valor <= conta->saldo){
-        conta->saldo -= valor;
-         printf("Saque de R$ %.2f realizado com sucesso!\n", valor);
-    }
-    else if (valor > conta->saldo) { 
-        printf("Saldo insuficiente para o saque de R$ %.2f.\n", valor); 
-    }
-    else {  
-        printf("Valor de saque inválido.\n");
-    }
-}
-
-void imprimir(struct contaBancaria conta) {
-    printf("Número da conta: %d\n", conta.numConta);
-    printf("Titular: %s\n", conta.nomeTitular);
-    printf("Saldo atual: R$ %.2f\n", conta.saldo);
-}
-
-int main() {
-    struct contaBancaria conta1;
-
-    // Solicitando dados ao cliente
-    printf("Digite o número da conta: ");
-    scanf("%d", &conta1.numConta);
-
-    printf("Digite o nome do titular da conta: ");
-    getchar();  // Para limpar o buffer do scanf
-    fgets(conta1.nomeTitular, 50, stdin);
-    conta1.nomeTitular[strcspn(conta1.nomeTitular, "\n")] = '\0';  // Remove a quebra de linha do nome
-
-    conta1.saldo = 0.00;  // O saldo inicial será zero
-
-    // Exibindo a conta bancária criada
-    printf("\nConta criada com sucesso!\n");
-    imprimir(conta1);
-
-    // Solicitando um depósito
-    float deposito;
-    printf("\nDigite o valor para depósito: R$ ");
-    scanf("%f", &deposito);
-    depositar(&conta1, deposito);
-    imprimir(conta1);
-
-    // Solicitando um saque
-    float saque;
-    printf("\nDigite o valor para saque: R$ ");
-    scanf("%f", &saque);
-    sacar(&conta1, saque);
-    imprimir(conta1);
+   
+    free(func);
 
     return 0;
+
 }
