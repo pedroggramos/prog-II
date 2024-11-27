@@ -1,0 +1,5 @@
+getc = ele pega do arquivo
+putchar  = printa no console
+
+getchar = ele pega do console
+putc = printa no arquivo

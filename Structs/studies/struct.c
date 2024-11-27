@@ -1,8 +1,8 @@
-// 1
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-// #include <stdio.h>
-// #include <string.h>
-// #include <stdlib.h>
+// 1)
 
 // struct Aluno{
 //     char nome[50];
@@ -58,3 +58,34 @@
 
 //     return 0;
 // }
+
+
+// 
+
+// 2)
+
+struct Tempo{
+    int minutos;
+    int horas;
+};
+
+void converter(struct Tempo tmp, int totalminutos){
+    
+    tmp.horas = totalminutos / 60;
+    tmp.minutos = totalminutos % 60;
+
+    printf("%d é o mesmo que %d horas e %d minutos", totalminutos, tmp.horas, tmp.minutos);
+
+}
+
+int main(){
+    struct Tempo t;
+    int minutosT;
+
+    printf("Digite a quantidade de minutos: ");
+    scanf("%d", &minutosT);
+
+    converter(t, minutosT);
+
+    return 0;
+}
